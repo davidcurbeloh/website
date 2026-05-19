@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>David Curbelo-Hernández | Academic CV</title>
+
+  <!-- Clean academic typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#f4f7fb;
+      --paper:#ffffff;
+      --ink:#17212f;
+      --muted:#5f6b7a;
+      --line:#dde5ef;
+      --accent:#1f4e79;
+      --accent-2:#2f6ea5;
+      --accent-soft:#e9f1f8;
+      --gold:#b18a4a;
+      --hero1:#16324f;
+      --hero2:#254f78;
+      --shadow:0 14px 34px rgba(24,40,68,0.08);
+      --radius:18px;
+      --sans:"Inter", Arial, Helvetica, sans-serif;
+      --serif:"Source Serif 4", Georgia, "Times New Roman", serif;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:var(--sans);
+      background:
+        radial-gradient(circle at top left, rgba(47,110,165,0.07), transparent 22%),
+        linear-gradient(180deg, #f7f9fc 0%, var(--bg) 100%);
+      color:var(--ink);
+      line-height:1.68;
+    }
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+
+    .topbar{
+      background:#0f1b2a;
+      color:#fff;
+      border-bottom:3px solid var(--gold);
+      position:sticky;
+      top:0;
+      z-index:20;
+      box-shadow:0 8px 18px rgba(0,0,0,0.08);
+    }
+    .topbar-inner{
+      max-width:1200px;
+      margin:0 auto;
+      padding:14px 24px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:20px;
+      font-family:var(--sans);
+    }
+    .site-title{
+      font-weight:700;
+      font-size:0.98rem;
+      letter-spacing:0.02em;
+      color:#f5f7fa;
+    }
+    .mini-nav{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:flex-end;
+      font-size:0.88rem;
+    }
+    .mini-nav a,
+    .nav-group > button{
+      color:#dbe7f4;
+      padding:8px 11px;
+      border-radius:999px;
+      transition:background 0.18s ease;
+      background:transparent;
+      border:0;
+      font-family:var(--sans);
+      font-size:0.9rem;
+      font-weight:700;
+      cursor:pointer;
+    }
+    .mini-nav a:hover,
+    .nav-group > button:hover{
+      text-decoration:none;
+      background:rgba(255,255,255,0.1);
+    }
+    .nav-group{
+      position:relative;
+    }
+    .dropdown{
+      position:absolute;
+      top:100%;
+      left:0;
+      min-width:220px;
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:8px;
+      box-shadow:0 18px 35px rgba(0,0,0,0.16);
+      display:none;
+      z-index:50;
+    }
+    .dropdown a{
+      display:block;
+      color:var(--ink);
+      padding:10px 12px;
+      border-radius:10px;
+      font-size:0.9rem;
+      font-weight:600;
+      white-space:nowrap;
+    }
+    .dropdown a:hover{
+      background:var(--accent-soft);
+      text-decoration:none;
+    }
+    .nav-group:hover .dropdown{
+      display:block;
+    }
+
+    .hero{
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02)),
+        linear-gradient(135deg, var(--hero1), var(--hero2));
+      color:#fff;
+      position:relative;
+      overflow:hidden;
+    }
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(circle at 78% 20%, rgba(255,255,255,0.12), transparent 15%),
+        radial-gradient(circle at 18% 80%, rgba(255,255,255,0.08), transparent 18%);
+      pointer-events:none;
+    }
+    .hero-inner{
+      max-width:1200px;
+      margin:0 auto;
+      padding:54px 24px 44px;
+      position:relative;
+      z-index:1;
+    }
+    .hero-card{
+      display:grid;
+      grid-template-columns:1fr 220px;
+      gap:30px;
+      align-items:center;
+      background:rgba(255,255,255,0.08);
+      border:1px solid rgba(255,255,255,0.14);
+      border-radius:26px;
+      padding:28px;
+      box-shadow:0 20px 38px rgba(0,0,0,0.16);
+      backdrop-filter: blur(6px);
+    }
+    .hero-tag{
+      display:inline-block;
+      font-family:var(--sans);
+      font-size:0.84rem;
+      font-weight:700;
+      letter-spacing:0.08em;
+      text-transform:uppercase;
+      color:#e9f2fb;
+      background:rgba(255,255,255,0.10);
+      border:1px solid rgba(255,255,255,0.16);
+      border-radius:999px;
+      padding:9px 14px;
+      margin-bottom:16px;
+    }
+    .hero-title-row{
+      display:block;
+      margin-bottom:10px;
+    }
+    .hero h1{
+      font-family:var(--serif);
+      font-size:clamp(2.5rem, 4.6vw, 4.2rem);
+      line-height:1.08;
+      margin-bottom:0;
+      letter-spacing:-0.02em;
+      max-width:760px;
+    }
+    .hero .subtitle{
+      font-family:var(--sans);
+      font-size:1.12rem;
+      font-weight:700;
+      color:#f1f6fb;
+      margin-bottom:16px;
+    }
+    .hero .summary{
+      max-width:760px;
+      font-size:1.08rem;
+      color:#ebf2fa;
+      margin-bottom:20px;
+    }
+    .hero-meta{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      font-family:var(--sans);
+      font-size:0.93rem;
+      color:#eff5fb;
+    }
+    .hero-chip{
+      background:rgba(255,255,255,0.10);
+      border:1px solid rgba(255,255,255,0.13);
+      padding:10px 14px;
+      border-radius:999px;
+    }
+    .hero-photo-wrap{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+    }
+    .photo-box{
+      width:178px;
+      height:210px;
+      border-radius:20px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.16), rgba(255,255,255,0.06));
+      border:1.6px dashed rgba(255,255,255,0.45);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:20px;
+      color:#e7eef8;
+      font-family:var(--sans);
+      font-size:0.88rem;
+      line-height:1.35;
+      box-shadow:0 16px 30px rgba(0,0,0,0.14);
+    }
+
+    .tabs-wrap{
+      background:#fff;
+      border-bottom:1px solid var(--line);
+      box-shadow:0 6px 16px rgba(24,40,68,0.04);
+    }
+    .tabs{
+      max-width:1200px;
+      margin:0 auto;
+      padding:0 24px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      font-family:var(--sans);
+    }
+    .tabs a{
+      color:var(--accent);
+      font-size:0.9rem;
+      font-weight:700;
+      padding:14px 4px 13px;
+      border-bottom:3px solid transparent;
+    }
+    .tabs a:hover{
+      text-decoration:none;
+      border-bottom-color:var(--gold);
+    }
+
+    main{
+      max-width:1200px;
+      margin:0 auto;
+      padding:30px 24px 80px;
+    }
+
+    section{
+      background:var(--paper);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:30px 30px 20px;
+      box-shadow:var(--shadow);
+      margin-bottom:22px;
+      position:relative;
+      overflow:hidden;
+    }
+    section::before{
+      content:"";
+      position:absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:5px;
+      background:linear-gradient(90deg, var(--accent), var(--gold));
+    }
+    .section-heading{
+      display:flex;
+      align-items:end;
+      justify-content:space-between;
+      gap:20px;
+      margin-bottom:18px;
+    }
+    section h2{
+      font-family:var(--serif);
+      font-size:1.85rem;
+      line-height:1.2;
+      color:var(--ink);
+    }
+    .section-note{
+      font-family:var(--sans);
+      color:var(--muted);
+      font-size:0.92rem;
+    }
+    .section-subtitle{
+      color:var(--accent);
+      font-size:1.08rem;
+      margin:20px 0 4px;
+    }
+    .lead p{
+      font-family:var(--serif);
+      font-size:1.06rem;
+      margin-bottom:14px;
+      color:#334255;
+    }
+
+    .entry{
+      display:grid;
+      grid-template-columns:190px 1fr;
+      gap:24px;
+      padding:18px 0;
+      border-bottom:1px solid var(--line);
+    }
+    .entry:last-child{border-bottom:none}
+    .date{
+      font-family:var(--sans);
+      color:var(--accent);
+      font-weight:700;
+      font-size:0.93rem;
+      letter-spacing:0.01em;
+      padding-top:2px;
+    }
+    .entry-content h3{
+      font-size:1.1rem;
+      margin-bottom:4px;
+      color:#1e2a3d;
+    }
+    .institution{
+      font-family:var(--sans);
+      color:var(--muted);
+      font-size:0.95rem;
+      margin-bottom:8px;
+    }
+    .entry-content p, .entry-content li{
+      color:#3b4758;
+    }
+    .entry-content ul{
+      margin-top:8px;
+    }
+
+    .pub{
+      padding:16px 0;
+      border-bottom:1px solid var(--line);
+    }
+    .pub:last-child{border-bottom:none}
+    .pub-title{
+      font-weight:700;
+      font-size:1.03rem;
+      color:#1d293a;
+      margin-bottom:6px;
+    }
+    .pub-meta{
+      font-family:var(--sans);
+      font-size:0.91rem;
+      color:var(--muted);
+      margin-bottom:4px;
+    }
+
+    .grid-2{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:20px;
+    }
+    .subcard{
+      background:linear-gradient(180deg, #fcfdff, #f7faff);
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:22px;
+    }
+    .subcard h3{
+      color:var(--accent);
+      font-size:1.08rem;
+      margin-bottom:12px;
+    }
+
+    .skills-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+    }
+    .skill-box{
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:22px;
+      background:linear-gradient(180deg, #fdfefe, #f7fafc);
+    }
+    .skill-box h3{
+      font-size:1.08rem;
+      color:var(--accent);
+      margin-bottom:10px;
+    }
+
+    ul{margin-left:20px}
+    .compact-note{
+      margin-top:12px;
+      color:var(--muted);
+      font-size:0.92rem;
+      font-family:var(--sans);
+    }
+
+    footer{
+      background:#121c29;
+      color:#dce5ef;
+      text-align:center;
+      padding:28px 24px;
+      font-family:var(--sans);
+      font-size:0.92rem;
+      margin-top:26px;
+    }
+
+    @media (max-width: 980px){
+      .hero-card{grid-template-columns:1fr}
+      .hero-photo-wrap{justify-content:flex-start}
+      .grid-2,.skills-grid{grid-template-columns:1fr}
+      .entry{grid-template-columns:1fr;gap:8px}
+      .topbar-inner{flex-direction:column;align-items:flex-start}
+      .dropdown{position:static;display:none;margin-top:4px}
+      .nav-group:hover .dropdown{display:block}
+    }
+
+    @media (max-width: 720px){
+      .hero-title-row{align-items:flex-start}
+      .photo-box{
+        width:148px;
+        height:176px;
+      }
+    }
+  
+    /* Mobile-first refinements */
+    @media (max-width: 980px){
+      .topbar{
+        position:static;
+      }
+
+      .topbar-inner{
+        flex-direction:column;
+        align-items:flex-start;
+        padding:14px 18px;
+      }
+
+      .site-title{
+        font-size:1rem;
+        white-space:normal;
+      }
+
+      .mini-nav{
+        width:100%;
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        gap:8px;
+        justify-content:stretch;
+      }
+
+      .mini-nav > a,
+      .nav-group > button{
+        width:100%;
+        text-align:left;
+        background:rgba(255,255,255,0.08);
+        border-radius:12px;
+        padding:10px 12px;
+      }
+
+      .nav-group{
+        width:100%;
+      }
+
+      .dropdown{
+        position:static;
+        display:block;
+        margin-top:6px;
+        min-width:0;
+        width:100%;
+        background:rgba(255,255,255,0.06);
+        border:1px solid rgba(255,255,255,0.12);
+        box-shadow:none;
+      }
+
+      .dropdown a{
+        color:#e8f1fb;
+        white-space:normal;
+        padding:9px 10px;
+      }
+
+      .dropdown a:hover{
+        background:rgba(255,255,255,0.10);
+      }
+
+      .hero-inner{
+        padding:30px 16px 28px;
+      }
+
+      .hero-card{
+        grid-template-columns:1fr;
+        gap:22px;
+        padding:22px;
+        border-radius:22px;
+      }
+
+      .hero-photo-wrap{
+        justify-content:center;
+        order:-1;
+      }
+
+      .photo-box{
+        width:170px;
+        height:200px;
+        border-radius:18px;
+        font-size:0.82rem;
+      }
+
+      .hero h1{
+        font-size:2.35rem;
+      }
+
+      .hero .subtitle{
+        font-size:1rem;
+      }
+
+      .hero .summary{
+        font-size:1rem;
+      }
+
+      .hero-meta{
+        gap:8px;
+      }
+
+      .hero-chip{
+        width:100%;
+        border-radius:14px;
+        padding:9px 11px;
+        overflow-wrap:anywhere;
+      }
+
+      main{
+        padding:22px 14px 54px;
+      }
+
+      section{
+        padding:24px 18px 16px;
+        border-radius:16px;
+        margin-bottom:18px;
+      }
+
+      .section-heading{
+        display:block;
+      }
+
+      section h2{
+        font-size:1.55rem;
+        margin-bottom:6px;
+      }
+
+      .section-note{
+        display:block;
+        margin-bottom:12px;
+      }
+
+      .grid-2,
+      .skills-grid{
+        grid-template-columns:1fr;
+      }
+
+      .entry{
+        grid-template-columns:1fr;
+        gap:6px;
+        padding:16px 0;
+      }
+
+      .date{
+        font-size:0.85rem;
+      }
+
+      .entry-content h3{
+        font-size:1rem;
+      }
+
+      .entry-content p,
+      .entry-content li,
+      .lead p{
+        font-size:0.98rem;
+      }
+
+      ul{
+        margin-left:18px;
+      }
+    }
+
+    @media (max-width: 560px){
+      body{
+        line-height:1.6;
+      }
+
+      .topbar-inner{
+        padding:12px 14px;
+      }
+
+      .mini-nav{
+        grid-template-columns:1fr;
+      }
+
+      .hero-inner{
+        padding:22px 12px 24px;
+      }
+
+      .hero-card{
+        padding:18px;
+      }
+
+      .hero h1{
+        font-size:2rem;
+      }
+
+      .photo-box{
+        width:150px;
+        height:180px;
+      }
+
+      main{
+        padding:18px 10px 44px;
+      }
+
+      section{
+        padding:22px 15px 14px;
+      }
+
+      section h2{
+        font-size:1.42rem;
+      }
+
+      .subcard,
+      .skill-box{
+        padding:17px;
+      }
+
+      .pub-title{
+        font-size:0.98rem;
+      }
+
+      footer{
+        padding:22px 16px;
+        font-size:0.85rem;
+      }
+    }
+
+  
+    /* Multipage layout refinements */
+    .site-title a{color:#f5f7fa;text-decoration:none}
+    .page-hero .hero-card{grid-template-columns:1fr !important}
+  
+    /* Profile photo and CV download */
+    .profile-photo{
+      width:220px;
+      height:260px;
+      border-radius:22px;
+      object-fit:cover;
+      object-position:center top;
+      border:2px solid rgba(255,255,255,0.45);
+      box-shadow:0 16px 30px rgba(0,0,0,0.18);
+      display:block;
+    }
+    .hero-actions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:18px;
+      font-family:var(--sans);
+    }
+    .hero-button{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:11px 15px;
+      border-radius:999px;
+      background:#ffffff;
+      color:var(--accent) !important;
+      border:1px solid rgba(255,255,255,0.30);
+      font-weight:800;
+      font-size:0.9rem;
+      text-decoration:none;
+      box-shadow:0 8px 18px rgba(0,0,0,0.12);
+    }
+    .hero-button:hover{
+      text-decoration:none;
+      background:#f3f7fb;
+    }
+    .hero-button-note{
+      display:inline-flex;
+      align-items:center;
+      color:#e8f1fb;
+      font-size:0.86rem;
+      padding:10px 0;
+    }
+    .blog-post{
+      background:linear-gradient(180deg, #ffffff, #fbfdff);
+    }
+    .post-badge{
+      display:inline-block;
+      font-family:var(--sans);
+      color:var(--accent);
+      background:var(--accent-soft);
+      border:1px solid #d6e5f1;
+      border-radius:999px;
+      padding:6px 10px;
+      font-weight:800;
+      font-size:0.82rem;
+      margin-bottom:10px;
+    }
+    @media (max-width:980px){
+      .profile-photo{
+        width:170px;
+        height:200px;
+        border-radius:18px;
+      }
+      .hero-actions{
+        margin-top:14px;
+      }
+      .hero-button,
+      .hero-button-note{
+        width:100%;
+        justify-content:center;
+      }
+    }
+    @media (max-width:560px){
+      .profile-photo{
+        width:150px;
+        height:180px;
+      }
+    }
+
+  
+    /* GitHub Pages fixes and navigation cleanup */
+    .site-title a{color:#f5f7fa;text-decoration:none}
+    .page-hero .hero-card{grid-template-columns:1fr !important}
+    .profile-photo{
+      width:220px;
+      height:260px;
+      border-radius:22px;
+      object-fit:cover;
+      object-position:center top;
+      border:2px solid rgba(255,255,255,0.45);
+      box-shadow:0 16px 30px rgba(0,0,0,0.18);
+      display:block;
+    }
+    .hero-actions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:18px;
+      font-family:var(--sans);
+    }
+    .hero-button{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:11px 15px;
+      border-radius:999px;
+      background:#ffffff;
+      color:var(--accent) !important;
+      border:1px solid rgba(255,255,255,0.30);
+      font-weight:800;
+      font-size:0.9rem;
+      text-decoration:none;
+      box-shadow:0 8px 18px rgba(0,0,0,0.12);
+    }
+    .hero-button:hover{
+      text-decoration:none;
+      background:#f3f7fb;
+    }
+    .hero-button-note{
+      display:inline-flex;
+      align-items:center;
+      color:#e8f1fb;
+      font-size:0.86rem;
+      padding:10px 0;
+    }
+    .blog-post{
+      background:linear-gradient(180deg, #ffffff, #fbfdff);
+    }
+    .post-badge{
+      display:inline-block;
+      font-family:var(--sans);
+      color:var(--accent);
+      background:var(--accent-soft);
+      border:1px solid #d6e5f1;
+      border-radius:999px;
+      padding:6px 10px;
+      font-weight:800;
+      font-size:0.82rem;
+      margin-bottom:10px;
+    }
+    @media (max-width:980px){
+      .profile-photo{
+        width:170px;
+        height:200px;
+        border-radius:18px;
+      }
+      .hero-actions{
+        margin-top:14px;
+      }
+      .hero-button,
+      .hero-button-note{
+        width:100%;
+        justify-content:center;
+      }
+    }
+    @media (max-width:560px){
+      .profile-photo{
+        width:150px;
+        height:180px;
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="site-title"><a href="index.html">David Curbelo-Hernández</a></div>
+      <nav class="mini-nav">
+        <a href="index.html">Home</a>
+
+        <div class="nav-group">
+          <button type="button">CV ▾</button>
+          <div class="dropdown">
+            <a href="index.html#about">About me</a>
+            <a href="index.html#summary">CV summary</a>
+            <a href="index.html#education">Education</a>
+            <a href="index.html#employment">Employment</a>
+            <a href="index.html#fellowships">Fellowships & Grants</a>
+          </div>
+        </div>
+
+        <div class="nav-group">
+          <button type="button">Research ▾</button>
+          <div class="dropdown">
+            <a href="research.html#publications">Publications</a>
+            <a href="research.html#conferences">Conferences</a>
+            <a href="research.html#stays">Research stays</a>
+            <a href="research.html#projects">Projects</a>
+            <a href="research.html#seminars">Seminars</a>
+            <a href="research.html#workshops">Workshops</a>
+            <a href="research.html#fieldwork">Fieldwork</a>
+            <a href="research.html#skills">Skills</a>
+          </div>
+        </div>
+
+        <div class="nav-group">
+          <button type="button">Academic activities ▾</button>
+          <div class="dropdown">
+            <a href="academic-activities.html#teaching">Teaching</a>
+            <a href="academic-activities.html#service">Service</a>
+            <a href="academic-activities.html#outreach">Outreach</a>
+          </div>
+        </div>
+
+        <a href="blog.html">Blog</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero" style="margin:0;border:none;border-radius:0;box-shadow:none">
+    <div class="hero-inner">
+      <div class="hero-card">
+        <div>
+          <div class="hero-title-row">
+            <h1>David Curbelo-Hernández</h1>
+          </div>
+          <div class="subtitle">PhD in Oceanography and Global Change</div>
+          <p class="summary">
+            Chemical oceanographer working on marine biogeochemical cycles, carbonate-system dynamics,
+            air–sea CO₂ exchange, anthropogenic carbon storage and ocean acidification.
+          </p>
+          <div class="hero-meta">
+            <span class="hero-chip"><a style="color:#fff" href="mailto:david.curbelo@ulpgc.es">david.curbelo@ulpgc.es</a></span>
+            <span class="hero-chip"><a style="color:#fff" href="https://orcid.org/0000-0002-9826-7437">ORCID: 0000-0002-9826-7437</a></span>
+            <span class="hero-chip"><a style="color:#fff" href="https://scholar.google.es/citations?user=oVI95KoAAAAJ&hl=es&oi=ao">Google Scholar</a></span>
+            <span class="hero-chip"><a style="color:#fff" href="https://www.linkedin.com/in/david-curbelo-hern%C3%A1ndez-64569a1a3">LinkedIn</a></span>
+          </div>
+          <div class="hero-actions">
+            <a class="hero-button" href="assets/cv-david-curbelo-may-2026.pdf" download>⬇️ Download CV</a>
+            <span class="hero-button-note">Updated: May 2026</span>
+          </div>
+        </div>
+
+        <div class="hero-photo-wrap">
+          <img class="profile-photo" src="assets/profile.jpg" alt="Portrait of David Curbelo-Hernández">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main>
+<section id="about" class="lead">
+      <div class="section-heading">
+        <h2>About me</h2>
+        <div class="section-note">Personal and academic background</div>
+      </div>
+      <p>
+        I grew up in the Canary Islands, in the northeastern Atlantic, where the ocean is part of everyday life.
+        This close connection with the sea naturally shaped my curiosity about marine environments and the processes
+        that regulate their variability, vulnerability and role in the Earth system.
+      </p>
+      <p>
+        That interest led me to develop an academic path in environmental sciences, oceanography and, ultimately,
+        chemical oceanography. Over time, my research has focused on understanding the marine carbon cycle, the
+        carbonate system and the exchange of CO₂ between the ocean and the atmosphere, combining field observations,
+        autonomous platforms, laboratory analyses and model-based approaches.
+      </p>
+    </section>
+<section id="summary" class="lead">
+      <div class="section-heading">
+        <h2>CV summary</h2>
+        <div class="section-note">Concise overview</div>
+      </div>
+      <p>
+        I am a chemical oceanographer with a PhD in Oceanography and Global Change from the University of Las Palmas
+        de Gran Canaria, defended on 5 November 2025 with Cum Laude distinction.
+      </p>
+      <p>
+        My work focuses on marine biogeochemical cycles, carbonate-system dynamics, ocean acidification,
+        anthropogenic carbon storage and air–sea CO₂ exchange, with a strong emphasis on high-resolution
+        observations from Voluntary Observing Ships, coastal campaigns and oceanographic cruises.
+      </p>
+      <p>
+        Since 2021, I have co-authored six peer-reviewed open-access articles in JCR-indexed Q1 journals, five of
+        them as first author. I have also completed international research stays at IIM-CSIC and AWI, contributed to
+        national and regional research projects, participated in international conferences, and gained substantial
+        experience in fieldwork, autonomous observations, laboratory analyses, teaching and outreach.
+      </p>
+    </section>
+<section id="education">
+      <div class="section-heading"><h2>Education</h2></div>
+      <div class="entry">
+        <div class="date">2025</div>
+        <div class="entry-content">
+          <h3>PhD in Oceanography and Global Change</h3>
+          <div class="institution">University of Las Palmas de Gran Canaria, Spain</div>
+          <p>Supervisors: Prof. Melchor González-Dávila and Prof. J. Magdalena Santana-Casiano. Defended on 5 November 2025, Cum Laude. <a href="https://accedacris.ulpgc.es/handle/10553/151467">PhD thesis available in open access</a>.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="date">2019–2020</div>
+        <div class="entry-content">
+          <h3>MSc in Oceanography</h3>
+          <div class="institution">University of Las Palmas de Gran Canaria, Spain</div>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="date">2015–2019</div>
+        <div class="entry-content">
+          <h3>BSc in Environmental Sciences</h3>
+          <div class="institution">University of La Laguna, Spain</div>
+        </div>
+      </div>
+    </section>
+<section id="employment">
+      <div class="section-heading"><h2>Employment History</h2></div>
+      <div class="entry">
+        <div class="date">April 2026–present</div>
+        <div class="entry-content">
+          <h3>Project-funded Researcher (Oceanographer)</h3>
+          <div class="institution">QUIMA–IOCAG group, University of Las Palmas de Gran Canaria, Spain</div>
+          <p>Research on marine carbon cycling, coastal CO₂ dynamics and ocean acidification within national and regional projects.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="date">July 2022–March 2026</div>
+        <div class="entry-content">
+          <h3>PhD Fellow</h3>
+          <div class="institution">University of Las Palmas de Gran Canaria, Spain</div>
+          <p>Doctoral research on carbonate-system dynamics and air–sea CO₂ exchange in Atlantic and Mediterranean regions.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="date">April 2021–June 2022</div>
+        <div class="entry-content">
+          <h3>Project-funded Technician</h3>
+          <div class="institution">QUIMA–IOCAG group, University of Las Palmas de Gran Canaria, Spain</div>
+          <p>Technical and research support for marine carbonate chemistry, field measurements, autonomous observations and laboratory analyses.</p>
+        </div>
+      </div>
+    </section>
+<section id="fellowships">
+      <div class="section-heading"><h2>Fellowships & Grants</h2></div>
+      <div class="entry">
+        <div class="date">2022–2026</div>
+        <div class="entry-content">
+          <h3>PhD Fellowship</h3>
+          <div class="institution">University of Las Palmas de Gran Canaria, grant no. PIFULPGC 2020-2 ARTHUM-2</div>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="date">2022–2024</div>
+        <div class="entry-content">
+          <h3>Grants for the Development of the Research Career</h3>
+          <div class="institution">University of Las Palmas de Gran Canaria</div>
+          <p>Research stays and most conference attendances during the PhD were funded through these grants.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="date">2023</div>
+        <div class="entry-content">
+          <h3>SOLAS, NOAA and UCAR travel and accommodation grants</h3>
+          <div class="institution">For the SOLAS Summer School in Mindelo, Cabo Verde, and the pCO₂ Workshop in Oostende, Belgium</div>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="date">2025</div>
+        <div class="entry-content">
+          <h3>Santander Grants for supporting predoctoral researchers</h3>
+          <div class="institution">University of Las Palmas de Gran Canaria</div>
+        </div>
+      </div>
+    </section>
+<section id="contact">
+      <div class="section-heading"><h2>Contact</h2></div>
+      <div class="entry">
+        <div class="date">Institutional email</div>
+        <div class="entry-content">
+          <p><a href="mailto:david.curbelo@ulpgc.es">david.curbelo@ulpgc.es</a></p>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="date">Personal email</div>
+        <div class="entry-content">
+          <p><a href="mailto:davidcurbeloh@gmail.com">davidcurbeloh@gmail.com</a></p>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="date">ORCID</div>
+        <div class="entry-content">
+          <p><a href="https://orcid.org/0000-0002-9826-7437">0000-0002-9826-7437</a></p>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="date">Google Scholar</div>
+        <div class="entry-content">
+          <p><a href="https://scholar.google.es/citations?user=oVI95KoAAAAJ&hl=es&oi=ao">Google Scholar profile</a></p>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="date">LinkedIn</div>
+        <div class="entry-content">
+          <p><a href="https://www.linkedin.com/in/david-curbelo-hern%C3%A1ndez-64569a1a3">LinkedIn profile</a></p>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="date">Social media</div>
+        <div class="entry-content">
+          <p>
+            Instagram: <a href="https://www.instagram.com/davidcurbeloh">@davidcurbeloh</a><br>
+            X / Twitter: <a href="https://twitter.com/davidcurbeloh">@davidcurbeloh</a>
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2026 David Curbelo-Hernández
+  </footer>
+</body>
+</html>
