@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Research | David Curbelo-Hernández</title>
+
+  <!-- Clean academic typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#f4f7fb;
+      --paper:#ffffff;
+      --ink:#17212f;
+      --muted:#5f6b7a;
+      --line:#dde5ef;
+      --accent:#1f4e79;
+      --accent-2:#2f6ea5;
+      --accent-soft:#e9f1f8;
+      --gold:#b18a4a;
+      --hero1:#16324f;
+      --hero2:#254f78;
+      --shadow:0 14px 34px rgba(24,40,68,0.08);
+      --radius:18px;
+      --sans:"Inter", Arial, Helvetica, sans-serif;
+      --serif:"Source Serif 4", Georgia, "Times New Roman", serif;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:var(--sans);
+      background:
+        radial-gradient(circle at top left, rgba(47,110,165,0.07), transparent 22%),
+        linear-gradient(180deg, #f7f9fc 0%, var(--bg) 100%);
+      color:var(--ink);
+      line-height:1.68;
+    }
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+
+    .topbar{
+      background:#0f1b2a;
+      color:#fff;
+      border-bottom:3px solid var(--gold);
+      position:sticky;
+      top:0;
+      z-index:20;
+      box-shadow:0 8px 18px rgba(0,0,0,0.08);
+    }
+    .topbar-inner{
+      max-width:1200px;
+      margin:0 auto;
+      padding:14px 24px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:20px;
+      font-family:var(--sans);
+    }
+    .site-title{
+      font-weight:700;
+      font-size:0.98rem;
+      letter-spacing:0.02em;
+      color:#f5f7fa;
+    }
+    .mini-nav{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:flex-end;
+      font-size:0.88rem;
+    }
+    .mini-nav a,
+    .nav-group > button{
+      color:#dbe7f4;
+      padding:8px 11px;
+      border-radius:999px;
+      transition:background 0.18s ease;
+      background:transparent;
+      border:0;
+      font-family:var(--sans);
+      font-size:0.9rem;
+      font-weight:700;
+      cursor:pointer;
+    }
+    .mini-nav a:hover,
+    .nav-group > button:hover{
+      text-decoration:none;
+      background:rgba(255,255,255,0.1);
+    }
+    .nav-group{
+      position:relative;
+    }
+    .dropdown{
+      position:absolute;
+      top:100%;
+      left:0;
+      min-width:220px;
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:8px;
+      box-shadow:0 18px 35px rgba(0,0,0,0.16);
+      display:none;
+      z-index:50;
+    }
+    .dropdown a{
+      display:block;
+      color:var(--ink);
+      padding:10px 12px;
+      border-radius:10px;
+      font-size:0.9rem;
+      font-weight:600;
+      white-space:nowrap;
+    }
+    .dropdown a:hover{
+      background:var(--accent-soft);
+      text-decoration:none;
+    }
+    .nav-group:hover .dropdown{
+      display:block;
+    }
+
+    .hero{
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02)),
+        linear-gradient(135deg, var(--hero1), var(--hero2));
+      color:#fff;
+      position:relative;
+      overflow:hidden;
+    }
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(circle at 78% 20%, rgba(255,255,255,0.12), transparent 15%),
+        radial-gradient(circle at 18% 80%, rgba(255,255,255,0.08), transparent 18%);
+      pointer-events:none;
+    }
+    .hero-inner{
+      max-width:1200px;
+      margin:0 auto;
+      padding:54px 24px 44px;
+      position:relative;
+      z-index:1;
+    }
+    .hero-card{
+      display:grid;
+      grid-template-columns:1fr 220px;
+      gap:30px;
+      align-items:center;
+      background:rgba(255,255,255,0.08);
+      border:1px solid rgba(255,255,255,0.14);
+      border-radius:26px;
+      padding:28px;
+      box-shadow:0 20px 38px rgba(0,0,0,0.16);
+      backdrop-filter: blur(6px);
+    }
+    .hero-tag{
+      display:inline-block;
+      font-family:var(--sans);
+      font-size:0.84rem;
+      font-weight:700;
+      letter-spacing:0.08em;
+      text-transform:uppercase;
+      color:#e9f2fb;
+      background:rgba(255,255,255,0.10);
+      border:1px solid rgba(255,255,255,0.16);
+      border-radius:999px;
+      padding:9px 14px;
+      margin-bottom:16px;
+    }
+    .hero-title-row{
+      display:block;
+      margin-bottom:10px;
+    }
+    .hero h1{
+      font-family:var(--serif);
+      font-size:clamp(2.5rem, 4.6vw, 4.2rem);
+      line-height:1.08;
+      margin-bottom:0;
+      letter-spacing:-0.02em;
+      max-width:760px;
+    }
+    .hero .subtitle{
+      font-family:var(--sans);
+      font-size:1.12rem;
+      font-weight:700;
+      color:#f1f6fb;
+      margin-bottom:16px;
+    }
+    .hero .summary{
+      max-width:760px;
+      font-size:1.08rem;
+      color:#ebf2fa;
+      margin-bottom:20px;
+    }
+    .hero-meta{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      font-family:var(--sans);
+      font-size:0.93rem;
+      color:#eff5fb;
+    }
+    .hero-chip{
+      background:rgba(255,255,255,0.10);
+      border:1px solid rgba(255,255,255,0.13);
+      padding:10px 14px;
+      border-radius:999px;
+    }
+    .hero-photo-wrap{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+    }
+    .photo-box{
+      width:178px;
+      height:210px;
+      border-radius:20px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.16), rgba(255,255,255,0.06));
+      border:1.6px dashed rgba(255,255,255,0.45);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:20px;
+      color:#e7eef8;
+      font-family:var(--sans);
+      font-size:0.88rem;
+      line-height:1.35;
+      box-shadow:0 16px 30px rgba(0,0,0,0.14);
+    }
+
+    .tabs-wrap{
+      background:#fff;
+      border-bottom:1px solid var(--line);
+      box-shadow:0 6px 16px rgba(24,40,68,0.04);
+    }
+    .tabs{
+      max-width:1200px;
+      margin:0 auto;
+      padding:0 24px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      font-family:var(--sans);
+    }
+    .tabs a{
+      color:var(--accent);
+      font-size:0.9rem;
+      font-weight:700;
+      padding:14px 4px 13px;
+      border-bottom:3px solid transparent;
+    }
+    .tabs a:hover{
+      text-decoration:none;
+      border-bottom-color:var(--gold);
+    }
+
+    main{
+      max-width:1200px;
+      margin:0 auto;
+      padding:30px 24px 80px;
+    }
+
+    section{
+      background:var(--paper);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:30px 30px 20px;
+      box-shadow:var(--shadow);
+      margin-bottom:22px;
+      position:relative;
+      overflow:hidden;
+    }
+    section::before{
+      content:"";
+      position:absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:5px;
+      background:linear-gradient(90deg, var(--accent), var(--gold));
+    }
+    .section-heading{
+      display:flex;
+      align-items:end;
+      justify-content:space-between;
+      gap:20px;
+      margin-bottom:18px;
+    }
+    section h2{
+      font-family:var(--serif);
+      font-size:1.85rem;
+      line-height:1.2;
+      color:var(--ink);
+    }
+    .section-note{
+      font-family:var(--sans);
+      color:var(--muted);
+      font-size:0.92rem;
+    }
+    .section-subtitle{
+      color:var(--accent);
+      font-size:1.08rem;
+      margin:20px 0 4px;
+    }
+    .lead p{
+      font-family:var(--serif);
+      font-size:1.06rem;
+      margin-bottom:14px;
+      color:#334255;
+    }
+
+    .entry{
+      display:grid;
+      grid-template-columns:190px 1fr;
+      gap:24px;
+      padding:18px 0;
+      border-bottom:1px solid var(--line);
+    }
+    .entry:last-child{border-bottom:none}
+    .date{
+      font-family:var(--sans);
+      color:var(--accent);
+      font-weight:700;
+      font-size:0.93rem;
+      letter-spacing:0.01em;
+      padding-top:2px;
+    }
+    .entry-content h3{
+      font-size:1.1rem;
+      margin-bottom:4px;
+      color:#1e2a3d;
+    }
+    .institution{
+      font-family:var(--sans);
+      color:var(--muted);
+      font-size:0.95rem;
+      margin-bottom:8px;
+    }
+    .entry-content p, .entry-content li{
+      color:#3b4758;
+    }
+    .entry-content ul{
+      margin-top:8px;
+    }
+
+    .pub{
+      padding:16px 0;
+      border-bottom:1px solid var(--line);
+    }
+    .pub:last-child{border-bottom:none}
+    .pub-title{
+      font-weight:700;
+      font-size:1.03rem;
+      color:#1d293a;
+      margin-bottom:6px;
+    }
+    .pub-meta{
+      font-family:var(--sans);
+      font-size:0.91rem;
+      color:var(--muted);
+      margin-bottom:4px;
+    }
+
+    .grid-2{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:20px;
+    }
+    .subcard{
+      background:linear-gradient(180deg, #fcfdff, #f7faff);
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:22px;
+    }
+    .subcard h3{
+      color:var(--accent);
+      font-size:1.08rem;
+      margin-bottom:12px;
+    }
+
+    .skills-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+    }
+    .skill-box{
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:22px;
+      background:linear-gradient(180deg, #fdfefe, #f7fafc);
+    }
+    .skill-box h3{
+      font-size:1.08rem;
+      color:var(--accent);
+      margin-bottom:10px;
+    }
+
+    ul{margin-left:20px}
+    .compact-note{
+      margin-top:12px;
+      color:var(--muted);
+      font-size:0.92rem;
+      font-family:var(--sans);
+    }
+
+    footer{
+      background:#121c29;
+      color:#dce5ef;
+      text-align:center;
+      padding:28px 24px;
+      font-family:var(--sans);
+      font-size:0.92rem;
+      margin-top:26px;
+    }
+
+    @media (max-width: 980px){
+      .hero-card{grid-template-columns:1fr}
+      .hero-photo-wrap{justify-content:flex-start}
+      .grid-2,.skills-grid{grid-template-columns:1fr}
+      .entry{grid-template-columns:1fr;gap:8px}
+      .topbar-inner{flex-direction:column;align-items:flex-start}
+      .dropdown{position:static;display:none;margin-top:4px}
+      .nav-group:hover .dropdown{display:block}
+    }
+
+    @media (max-width: 720px){
+      .hero-title-row{align-items:flex-start}
+      .photo-box{
+        width:148px;
+        height:176px;
+      }
+    }
+  
+    /* Mobile-first refinements */
+    @media (max-width: 980px){
+      .topbar{
+        position:static;
+      }
+
+      .topbar-inner{
+        flex-direction:column;
+        align-items:flex-start;
+        padding:14px 18px;
+      }
+
+      .site-title{
+        font-size:1rem;
+        white-space:normal;
+      }
+
+      .mini-nav{
+        width:100%;
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        gap:8px;
+        justify-content:stretch;
+      }
+
+      .mini-nav > a,
+      .nav-group > button{
+        width:100%;
+        text-align:left;
+        background:rgba(255,255,255,0.08);
+        border-radius:12px;
+        padding:10px 12px;
+      }
+
+      .nav-group{
+        width:100%;
+      }
+
+      .dropdown{
+        position:static;
+        display:block;
+        margin-top:6px;
+        min-width:0;
+        width:100%;
+        background:rgba(255,255,255,0.06);
+        border:1px solid rgba(255,255,255,0.12);
+        box-shadow:none;
+      }
+
+      .dropdown a{
+        color:#e8f1fb;
+        white-space:normal;
+        padding:9px 10px;
+      }
+
+      .dropdown a:hover{
+        background:rgba(255,255,255,0.10);
+      }
+
+      .hero-inner{
+        padding:30px 16px 28px;
+      }
+
+      .hero-card{
+        grid-template-columns:1fr;
+        gap:22px;
+        padding:22px;
+        border-radius:22px;
+      }
+
+      .hero-photo-wrap{
+        justify-content:center;
+        order:-1;
+      }
+
+      .photo-box{
+        width:170px;
+        height:200px;
+        border-radius:18px;
+        font-size:0.82rem;
+      }
+
+      .hero h1{
+        font-size:2.35rem;
+      }
+
+      .hero .subtitle{
+        font-size:1rem;
+      }
+
+      .hero .summary{
+        font-size:1rem;
+      }
+
+      .hero-meta{
+        gap:8px;
+      }
+
+      .hero-chip{
+        width:100%;
+        border-radius:14px;
+        padding:9px 11px;
+        overflow-wrap:anywhere;
+      }
+
+      main{
+        padding:22px 14px 54px;
+      }
+
+      section{
+        padding:24px 18px 16px;
+        border-radius:16px;
+        margin-bottom:18px;
+      }
+
+      .section-heading{
+        display:block;
+      }
+
+      section h2{
+        font-size:1.55rem;
+        margin-bottom:6px;
+      }
+
+      .section-note{
+        display:block;
+        margin-bottom:12px;
+      }
+
+      .grid-2,
+      .skills-grid{
+        grid-template-columns:1fr;
+      }
+
+      .entry{
+        grid-template-columns:1fr;
+        gap:6px;
+        padding:16px 0;
+      }
+
+      .date{
+        font-size:0.85rem;
+      }
+
+      .entry-content h3{
+        font-size:1rem;
+      }
+
+      .entry-content p,
+      .entry-content li,
+      .lead p{
+        font-size:0.98rem;
+      }
+
+      ul{
+        margin-left:18px;
+      }
+    }
+
+    @media (max-width: 560px){
+      body{
+        line-height:1.6;
+      }
+
+      .topbar-inner{
+        padding:12px 14px;
+      }
+
+      .mini-nav{
+        grid-template-columns:1fr;
+      }
+
+      .hero-inner{
+        padding:22px 12px 24px;
+      }
+
+      .hero-card{
+        padding:18px;
+      }
+
+      .hero h1{
+        font-size:2rem;
+      }
+
+      .photo-box{
+        width:150px;
+        height:180px;
+      }
+
+      main{
+        padding:18px 10px 44px;
+      }
+
+      section{
+        padding:22px 15px 14px;
+      }
+
+      section h2{
+        font-size:1.42rem;
+      }
+
+      .subcard,
+      .skill-box{
+        padding:17px;
+      }
+
+      .pub-title{
+        font-size:0.98rem;
+      }
+
+      footer{
+        padding:22px 16px;
+        font-size:0.85rem;
+      }
+    }
+
+  
+    /* Multipage layout refinements */
+    .site-title a{color:#f5f7fa;text-decoration:none}
+    .page-hero .hero-card{grid-template-columns:1fr !important}
+  
+    /* Profile photo and CV download */
+    .profile-photo{
+      width:220px;
+      height:260px;
+      border-radius:22px;
+      object-fit:cover;
+      object-position:center top;
+      border:2px solid rgba(255,255,255,0.45);
+      box-shadow:0 16px 30px rgba(0,0,0,0.18);
+      display:block;
+    }
+    .hero-actions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:18px;
+      font-family:var(--sans);
+    }
+    .hero-button{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:11px 15px;
+      border-radius:999px;
+      background:#ffffff;
+      color:var(--accent) !important;
+      border:1px solid rgba(255,255,255,0.30);
+      font-weight:800;
+      font-size:0.9rem;
+      text-decoration:none;
+      box-shadow:0 8px 18px rgba(0,0,0,0.12);
+    }
+    .hero-button:hover{
+      text-decoration:none;
+      background:#f3f7fb;
+    }
+    .hero-button-note{
+      display:inline-flex;
+      align-items:center;
+      color:#e8f1fb;
+      font-size:0.86rem;
+      padding:10px 0;
+    }
+    .blog-post{
+      background:linear-gradient(180deg, #ffffff, #fbfdff);
+    }
+    .post-badge{
+      display:inline-block;
+      font-family:var(--sans);
+      color:var(--accent);
+      background:var(--accent-soft);
+      border:1px solid #d6e5f1;
+      border-radius:999px;
+      padding:6px 10px;
+      font-weight:800;
+      font-size:0.82rem;
+      margin-bottom:10px;
+    }
+    @media (max-width:980px){
+      .profile-photo{
+        width:170px;
+        height:200px;
+        border-radius:18px;
+      }
+      .hero-actions{
+        margin-top:14px;
+      }
+      .hero-button,
+      .hero-button-note{
+        width:100%;
+        justify-content:center;
+      }
+    }
+    @media (max-width:560px){
+      .profile-photo{
+        width:150px;
+        height:180px;
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="site-title"><a href="index.html" style="color:#f5f7fa;text-decoration:none">David Curbelo-Hernández</a></div>
+      <nav class="mini-nav">
+        <a href="index.html">Home</a>
+
+        <div class="nav-group">
+          <button type="button">CV ▾</button>
+          <div class="dropdown">
+            <a href="index.html#about">About me</a>
+            <a href="index.html#summary">CV summary</a>
+            <a href="index.html#education">Education</a>
+            <a href="index.html#employment">Employment</a>
+            <a href="index.html#fellowships">Fellowships & Grants</a>
+          </div>
+        </div>
+
+        <div class="nav-group">
+          <button type="button">Research ▾</button>
+          <div class="dropdown">
+            <a href="research.html">Research overview</a>
+            <a href="research.html#publications">Publications</a>
+            <a href="research.html#conferences">Conferences</a>
+            <a href="research.html#stays">Research stays</a>
+            <a href="research.html#projects">Projects</a>
+            <a href="research.html#seminars">Seminars</a>
+            <a href="research.html#workshops">Workshops</a>
+            <a href="research.html#fieldwork">Fieldwork</a>
+            <a href="research.html#skills">Skills</a>
+          </div>
+        </div>
+
+        <div class="nav-group">
+          <button type="button">Academic activities ▾</button>
+          <div class="dropdown">
+            <a href="academic-activities.html">Academic activities overview</a>
+            <a href="academic-activities.html#teaching">Teaching</a>
+            <a href="academic-activities.html#service">Service</a>
+            <a href="academic-activities.html#outreach">Outreach</a>
+          </div>
+        </div>
+
+        <a href="blog.html">Blog</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero page-hero" style="margin:0;border:none;border-radius:0;box-shadow:none">
+    <div class="hero-inner">
+      <div class="hero-card" style="grid-template-columns:1fr">
+        <div>
+          <div class="hero-title-row">
+            <h1>Research</h1>
+          </div>
+          <div class="subtitle">Publications, projects, scientific training and fieldwork</div>
+          <p class="summary">An overview of my research output and scientific activity in marine biogeochemical cycles, carbonate-system dynamics, air–sea CO₂ exchange and ocean acidification.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main>
+<section id="publications">
+      <div class="section-heading">
+        <h2>Publications</h2>
+        <div class="section-note">With peer review process; * indicates corresponding author in the CV</div>
+      </div>
+      <div class="entry">
+        <div class="date">2026</div>
+        <div class="entry-content">
+          <h3>Modelling seawater pCO₂ and pH in the Canary Islands region based on satellite measurements and machine learning techniques</h3>
+          <div class="institution">Ocean Science, 22, 609–628</div>
+          <p>Sánchez-Mendoza, I.; González-Dávila, M.*; González-Santana, D.; Curbelo-Hernández, D.; Estupiñán-Santana, D.; González, A. G.; Santana-Casiano, J. M.</p>
+          <p><a href="https://doi.org/10.5194/os-22-609-2026">https://doi.org/10.5194/os-22-609-2026</a></p>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="date">2025</div>
+        <div class="entry-content">
+          <h3>Spatiotemporal variations in surface marine carbonate system properties across the western Mediterranean Sea using volunteer observing ship data</h3>
+          <div class="institution">Biogeosciences, 22, 3329–3356</div>
+          <p>Curbelo-Hernández, D.*; González-Santana, D.; González, A. G.; Santana-Casiano, J. M.; González-Dávila, M.</p>
+          <p><a href="https://doi.org/10.5194/bg-22-3329-2025">https://doi.org/10.5194/bg-22-3329-2025</a></p>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="date">2024</div>
+        <div class="entry-content">
+          <h3>Ocean acidification trends and carbonate system dynamics across the North Atlantic subpolar gyre water masses during 2009–2019</h3>
+          <div class="institution">Biogeosciences, 21, 5561–5589</div>
+          <p>Curbelo-Hernández, D.; Pérez, F. F.; González-Dávila, M.*; Gladyshev, S. V.; González, A. G.; González-Santana, D.; Velo, A.; Sokov, A.; Santana-Casiano, J. M.</p>
+          <p><a href="https://doi.org/10.5194/bg-21-5561-2024">https://doi.org/10.5194/bg-21-5561-2024</a></p>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="date">2023</div>
+        <div class="entry-content">
+          <h3>The carbonate system and air–sea CO₂ fluxes in coastal and open-ocean waters of the Macaronesia</h3>
+          <div class="institution">Frontiers in Marine Science, 10, 1094250</div>
+          <p>Curbelo-Hernández, D.; González-Dávila, M.*; Santana-Casiano, J. M.</p>
+          <p><a href="https://doi.org/10.3389/fmars.2023.1094250">https://doi.org/10.3389/fmars.2023.1094250</a></p>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="date">2021</div>
+        <div class="entry-content">
+          <h3>Air–sea CO₂ exchange in the Strait of Gibraltar</h3>
+          <div class="institution">Frontiers in Marine Science, 8, 745304</div>
+          <p>Curbelo-Hernández, D.; Santana-Casiano, J. M.; González, A. G.; González-Dávila, M.*</p>
+          <p><a href="https://doi.org/10.3389/fmars.2021.745304">https://doi.org/10.3389/fmars.2021.745304</a></p>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="date">2021</div>
+        <div class="entry-content">
+          <h3>CO₂ fluxes in the Northeast Atlantic based on measurements from a surface ocean observation platform</h3>
+          <div class="institution">Science of the Total Environment, 775, 145804</div>
+          <p>Curbelo-Hernández, D.; González-Dávila, M.*; González, A. G.; González-Santana, D.; Santana-Casiano, J. M.</p>
+          <p><a href="https://doi.org/10.1016/j.scitotenv.2021.145804">https://doi.org/10.1016/j.scitotenv.2021.145804</a></p>
+        </div>
+      </div>
+    </section>
+<section id="conferences">
+      <div class="section-heading">
+        <h2>Conference contributions</h2>
+        <div class="section-note">First-author contributions and selected co-authored abstracts</div>
+      </div>
+      <h3 class="section-subtitle">First-author contributions</h3>
+      <div class="entry">
+        <div class="date">2024</div>
+        <div class="entry-content">
+          <h3>ICOS Science Conference, Versailles, France and online</h3>
+          <p>Surface CO₂ system dynamics along the western Mediterranean Sea based on high-frequency measurements from a Volunteer Observing Ship. Oral communication.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="date">2023</div>
+        <div class="entry-content">
+          <h3>EGU General Assembly, Vienna, Austria</h3>
+          <p>Evaluation of the carbonate system and air-sea CO₂ fluxes in coastal waters of the Macaronesia archipelagos. Poster.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="date">2022</div>
+        <div class="entry-content">
+          <h3>ISMS2022 / SIQUIMAR, Las Palmas de Gran Canaria, Spain</h3>
+          <p>Spatio-temporal variability of the air-sea CO₂ fluxes in the Strait of Gibraltar based on high-frequency data collected by a VOS. Oral communication.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="date">2022</div>
+        <div class="entry-content">
+          <h3>ISMS2022 / SIQUIMAR, Las Palmas de Gran Canaria, Spain</h3>
+          <p>The variability of the surface CO₂ system and air-sea exchange in the Northeast Atlantic based on VOS data. Oral communication.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="date">2022</div>
+        <div class="entry-content">
+          <h3>EGU General Assembly, Vienna, Austria</h3>
+          <p>Variability of the air-sea CO₂ exchange in the Strait of Gibraltar based on measurements from a VOS line. Oral communication.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="date">2021</div>
+        <div class="entry-content">
+          <h3>AGU Fall Meeting, New Orleans, USA and online</h3>
+          <p>Short-term variability of the CO₂ system and air-sea fluxes in the Northeast Atlantic based on measurements from a surface ocean observation platform. Poster.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="date">2021</div>
+        <div class="entry-content">
+          <h3>AGU Fall Meeting, New Orleans, USA and online</h3>
+          <p>Spatio-temporal variability of the air-sea CO₂ exchange in the Strait of Gibraltar. Poster.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="date">2021</div>
+        <div class="entry-content">
+          <h3>EGU General Assembly, Vienna, Austria</h3>
+          <p>Seasonal and spatial variability of the CO₂ system parameters in the Northeast Atlantic based on measurements from a surface ocean observation platform. Oral communication.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="date">2020</div>
+        <div class="entry-content">
+          <h3>ISMS2020 / SIQUIMAR, Barcelona, Spain and online</h3>
+          <p>Temporary evolution of the carbon dioxide system in a Northeast Atlantic transect. Oral communication.</p>
+        </div>
+      </div>
+      <h3 class="section-subtitle">Selected co-authored abstracts</h3>
+      <div class="entry">
+        <div class="date">2025</div>
+        <div class="entry-content">
+          <h3>EGU General Assembly, Vienna, Austria</h3>
+          <p>Co-authored abstracts presented by González-Dávila et al. and González et al. Poster contributions.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="date">2024</div>
+        <div class="entry-content">
+          <h3>UHINAK and ISMS2024 / SIQUIMAR, Spain</h3>
+          <p>Co-authored abstracts presented by González et al. and Fontela et al. Oral and poster contributions.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="date">2023</div>
+        <div class="entry-content">
+          <h3>EGU General Assembly, Vienna, Austria</h3>
+          <p>Co-authored PICO presentation by González-Dávila et al.; short oral communication presented by me.</p>
+        </div>
+      </div>
+    </section>
+<section id="stays">
+      <div class="section-heading">
+        <h2>Research stays</h2>
+        <div class="section-note">Completed during the PhD; 8 months in total</div>
+      </div>
+      <div class="entry">
+        <div class="date">Fall 2023 & Fall 2024</div>
+        <div class="entry-content">
+          <h3>Alfred Wegener Institute (AWI), Bremerhaven, Germany</h3>
+          <div class="institution">2 + 3 months; supervised by Prof. Judith Hauck</div>
+          <p>Expanded expertise toward the analysis and interpretation of global physical–biogeochemical model outputs and drivers of air–sea CO₂ flux variability.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="date">Winter 2023</div>
+        <div class="entry-content">
+          <h3>Institute of Marine Research (IIM-CSIC), Vigo, Spain</h3>
+          <div class="institution">3 months; supervised by Prof. Fiz F. Pérez</div>
+          <p>Research on ocean acidification trends across the subpolar North Atlantic; this stay resulted in a peer-reviewed article in Biogeosciences.</p>
+        </div>
+      </div>
+    </section>
+<section id="projects">
+      <div class="section-heading">
+        <h2>Research projects and contracts</h2>
+        <div class="section-note">Projects in which I have been a team member</div>
+      </div>
+      <div class="entry">
+        <div class="date">2022–2025</div>
+        <div class="entry-content">
+          <h3>FeRIA</h3>
+          <div class="institution">Research project funded by the Spanish Science Ministry</div>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="date">2022–2024</div>
+        <div class="entry-content">
+          <h3>Multi-CO₂ast</h3>
+          <div class="institution">Research project funded by the Spanish Science Ministry</div>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="date">2019–2022</div>
+        <div class="entry-content">
+          <h3>SAGA</h3>
+          <div class="institution">Research project funded by the Spanish Science Ministry</div>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="date">2025</div>
+        <div class="entry-content">
+          <h3>CARBOCAN</h3>
+          <div class="institution">Agreement funded by the Canary Islands Government</div>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="date">2025–2026</div>
+        <div class="entry-content">
+          <h3>Canary coastal systems as a CO₂ sink</h3>
+          <div class="institution">Agreement funded by the Canary Islands Government</div>
+        </div>
+      </div>
+    </section>
+<section id="seminars">
+      <div class="section-heading"><h2>Invited Seminars & Colloquia</h2></div>
+      <div class="entry">
+        <div class="date">2025</div>
+        <div class="entry-content">
+          <h3>V CanBio Seminar, ULPGC, Spain</h3>
+          <p>Current trends in ocean acidification in Canary waters based on six years of CanOA observations.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="date">2023</div>
+        <div class="entry-content">
+          <h3>C-seminar series, AWI, Bremerhaven, Germany</h3>
+          <p>Spatio-temporal dynamics of surface ocean CO₂ system variables and air–sea CO₂ fluxes in the Northeast Atlantic and the Strait of Gibraltar.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="date">2021</div>
+        <div class="entry-content">
+          <h3>II CanBio Seminar, ULL, Spain</h3>
+          <p>Seasonal variability of CO₂ in the Northeast Atlantic.</p>
+        </div>
+      </div>
+    </section>
+<section id="workshops">
+      <div class="section-heading">
+        <h2>Workshops & Summer Schools</h2>
+        <div class="section-note">Selected for attending</div>
+      </div>
+      <div class="entry">
+        <div class="date">June 2023</div>
+        <div class="entry-content">
+          <h3>SOLAS Summer School</h3>
+          <div class="institution">Mindelo, Cabo Verde</div>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="date">November 2023</div>
+        <div class="entry-content">
+          <h3>Workshop on Surface Ocean pCO₂ Observations, Synthesis, and Data Products</h3>
+          <div class="institution">Oostende, Belgium</div>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="date">July 2023</div>
+        <div class="entry-content">
+          <h3>10th International Summer School on Deep Learning</h3>
+          <div class="institution">Las Palmas de Gran Canaria, Spain</div>
+        </div>
+      </div>
+    </section>
+<section id="fieldwork">
+      <div class="section-heading"><h2>Fieldwork experience</h2></div>
+      <div class="entry">
+        <div class="date">2021–present</div>
+        <div class="entry-content">
+          <h3>Autonomous observations</h3>
+          <p>Installation, maintenance and quality control of autonomous systems on VOS and oceanographic buoys, including the ICOS Ocean Station Class 1 ES-SOOP-CanOA.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="date">~2 months total</div>
+        <div class="entry-content">
+          <h3>Oceanographic cruises</h3>
+          <p>Participation in the SAGA 34.5ºS cruise from Punta Arenas to Cape Town and the SINES-EUROFLEETS+ cruise along the Portuguese coast. Work included seawater sampling, sensor deployment and onboard laboratory analyses of carbonate-system variables (AT, CT, pH) and dissolved oxygen using the Winkler method.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="date">Fall 2021</div>
+        <div class="entry-content">
+          <h3>Coastal sampling during the Tajogaite eruption</h3>
+          <div class="institution">La Palma, Canary Islands, Spain</div>
+          <p>Sampling around the lava delta of the Tajogaite Volcano during the eruption, within ongoing regional monitoring efforts and coastal sampling campaigns across the Canary archipelago.</p>
+        </div>
+      </div>
+    </section>
+<section id="skills">
+      <div class="section-heading"><h2>Skills</h2></div>
+      <div class="skills-grid">
+        <div class="skill-box">
+          <h3>Computational skills</h3>
+          <p>Scientific programming, data handling and reproducible workflows using MATLAB and Python. Experience with command-line interfaces, Linux data-processing workflows, supercomputing environments and LaTeX.</p>
+        </div>
+        <div class="skill-box">
+          <h3>Technical skills</h3>
+          <p>Autonomous observing systems on VOS and buoys; Sea-Bird thermometers and thermosalinographs; optodes; Pro-Oceanus dissolved gas sensors; pH meters; fluorometers; General Oceanics systems; Li-COR infrared gas analysers; multiparameter sensors.</p>
+        </div>
+        <div class="skill-box">
+          <h3>Laboratory skills</h3>
+          <p>Total alkalinity and total inorganic carbon using VINDTA instruments; dissolved oxygen using the Winkler method; pH using potentiometric and spectrophotometric methods; sediment carbon analyses including loss-on-ignition and Walkley–Black methods.</p>
+        </div>
+        <div class="skill-box">
+          <h3>Data integration and modelling</h3>
+          <p>Integration of observational datasets, satellite products, reanalysis datasets and model outputs, including FESOM2.7–REcoM3.1. Familiarity with CANYON-B, ESPER, SOCAT and GLODAP. Trend detection, time-series analysis, uncertainty assessment, error propagation and spatial-temporal diagnostics.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2026 David Curbelo-Hernández
+  </footer>
+</body>
+</html>
